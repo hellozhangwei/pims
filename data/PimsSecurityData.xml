@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-facade-xml type="seed">
+
+
+    <moqui.screen.SubscreensItem screenLocation="component://webroot/screen/webroot/apps.xml"
+                                 subscreenName="pims" menuTitle="Pims Application" menuIndex="1" menuInclude="Y"
+                                 subscreenLocation="component://pims/screen/PimsApp.xml"/>
+
+    <moqui.screen.SubscreensItem screenLocation="component://webroot/screen/webroot.xml"
+                                 subscreenName="Login" menuTitle="Pims Application" menuInclude="N"
+                                 subscreenLocation="component://pims/screen/Login.xml"/>
+
+
+    <moqui.security.UserGroup userGroupId="PIMS_ADMIN" description="Pims Administrators"/>
+
+    <moqui.security.ArtifactGroup artifactGroupId="PIMS_APP" description="Project information management system"/>
+    <moqui.security.ArtifactGroupMember artifactGroupId="PIMS_APP" artifactName="component://pims/screen/PimsApp.xml"
+                                        artifactTypeEnumId="AT_XML_SCREEN" inheritAuthz="Y"/>
+    <moqui.security.ArtifactAuthz artifactAuthzId="DO_AUTHZ_ALL" userGroupId="PIMS_ADMIN" artifactGroupId="PIMS_APP"
+                                  authzTypeEnumId="AUTHZT_ALWAYS" authzActionEnumId="AUTHZA_ALL"/>
+
+    <mantle.party.Party partyId="pims_test" partyTypeEnumId="PtyPerson"/>
+    <moqui.security.UserAccount userId="pims_test"  partyId="pims_test" username="pims_test" userFullName="Test Pims"
+                                currentPassword="16ac58bbfa332c1c55bd98b53e60720bfa90d394" passwordHashType="SHA"
+                                passwordHint="framework name, lowercase" currencyUomId="USD" locale="en_US" timeZone="US/Central"
+                                emailAddress="pmis@test.com"/>
+
+    <moqui.security.UserGroupMember userGroupId="PIMS_ADMIN" userId="pims_test" fromDate="1265184000000"/>
+
+
+</entity-facade-xml>
