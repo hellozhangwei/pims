@@ -9,6 +9,6 @@
     </subscreens>
 
     <widgets>
-        <subscreens-panel id="pims-app" type="popup" title="Pims Application"/>
+        <subscreens-panel id="pims-app" type="tab" title="Pims Application"/>
     </widgets>
 </screen>
