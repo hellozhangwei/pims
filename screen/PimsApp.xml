@@ -4,11 +4,17 @@
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
         include-child-content="true" require-authentication="false" menu-image="glyphicon glyphicon-flash" menu-image-type="icon">
 
+    <!--<macro-template type="html" location="template/screen-macro/TestScreenHtmlMacros.ftl"/>-->
+    <macro-template type="html" location="component://pims/screen-macro/PimsScreenHtmlMacros.ftl"/>
+
     <subscreens default-item="Project">
 
     </subscreens>
 
     <widgets>
+        <container style="teststyle" id="testid" type="div">
+
+        </container>
         <subscreens-panel id="pims-app" type="tab" title="Pims Application"/>
     </widgets>
 </screen>
