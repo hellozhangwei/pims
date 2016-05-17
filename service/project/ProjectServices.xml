@@ -1,0 +1,14 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.0.xsd">
+
+    <service verb="delete" noun="Project" type="inline">
+        <in-parameters>
+            <parameter name="workEffortId" required="true"/>
+            <parameter name="facilityId" required="true"/>
+        </in-parameters>
+        <actions>
+            <service-call name="delete#mantle.work.effort.WorkEffortFacility" in-map="context"/>
+            <service-call name="delete#mantle.work.effort.WorkEffort" in-map="context"/>
+        </actions>
+    </service>
+</services>

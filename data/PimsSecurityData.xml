@@ -2,7 +2,6 @@
 
 <entity-facade-xml type="seed">
 
-
     <moqui.screen.SubscreensItem screenLocation="component://webroot/screen/webroot/apps.xml"
                                  subscreenName="pims" menuTitle="Pims Application" menuIndex="1" menuInclude="Y"
                                  subscreenLocation="component://pims/screen/PimsApp.xml"/>
@@ -28,5 +27,8 @@
 
     <moqui.security.UserGroupMember userGroupId="PIMS_ADMIN" userId="pims_test" fromDate="1265184000000"/>
 
+    <mantle.facility.Facility facilityId="PLAN_A" facilityTypeEnumId="FcTpPlant" facilityName="Plant A"/>
+    <mantle.facility.Facility facilityId="PLAN_B" facilityTypeEnumId="FcTpPlant" facilityName="Plant B"/>
+    <mantle.facility.Facility facilityId="PLAN_C" facilityTypeEnumId="FcTpPlant" facilityName="Plant C"/>
 
 </entity-facade-xml>
