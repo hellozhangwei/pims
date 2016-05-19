@@ -5,16 +5,18 @@
         include-child-content="true" require-authentication="false" menu-image="glyphicon glyphicon-flash" menu-image-type="icon">
 
     <!--<macro-template type="html" location="template/screen-macro/TestScreenHtmlMacros.ftl"/>-->
-    <!--<macro-template type="html" location="component://pims/screen-macro/PimsScreenHtmlMacros.ftl"/>-->
+    <macro-template type="html" location="component://pims/screen-macro/PimsScreenHtmlMacros.ftl"/>
 
     <subscreens default-item="Project">
 
     </subscreens>
 
     <widgets>
-        <container style="teststyle" id="testid" type="div">
 
-        </container>
-        <subscreens-panel id="pims-app" type="popup" title="Pims Application"/>
+        <container-panel id="pims-panel" dynamic="true">
+            <panel-left spacing="0"><subscreens-menu id="pims-menu" type="tab"/></panel-left>
+            <panel-center><subscreens-active/></panel-center>
+        </container-panel>
+
     </widgets>
 </screen>
