@@ -1,0 +1,56 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
+        require-authentication="false" default-menu-title="Project" default-menu-index="1">
+
+    <parameter name="workEffortId"/>
+
+    <!--<transition name="newExample">-->
+        <!--<default-response url=".">-->
+            <!--<parameter name="exampleId" value=""/>-->
+        <!--</default-response>-->
+    <!--</transition>-->
+
+    <transition name="UpdateProject"><service-call name="update#WorkEffort"/><default-response url="."/></transition>
+    <actions>
+        <entity-find-one entity-name="WorkEffort" value-field="workEffort"/>
+    </actions>
+    <widgets>
+        <section name="ProjectMenu" condition="project"><widgets>
+            <link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>
+        </widgets></section>
+        <section name="Update">
+            <condition>
+                <compare field="workEffortId" operator="not-empty"/>
+            </condition>
+            <widgets>
+                <form-single name="EditProject" transition="UpdateProject" map="workEffort">
+                    <field name="workEffortId">
+                        <default-field title="Project Id">
+                            <hidden/>
+                        </default-field>
+                    </field>
+                    <field name="workEffortName">
+                        <default-field title="Project Name">
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="description">
+                        <default-field title="Description">
+                            <text-area/>
+                        </default-field>
+                    </field>
+
+                    <field name="submitButton">
+                        <default-field title="Update">
+                            <submit/>
+                        </default-field>
+                    </field>
+
+                    <!--<field-layout id="testDate">-->
+                        <!--<field-row><field-ref name="testDate"/><field-ref name="testTime"/></field-row>-->
+                    <!--</field-layout>-->
+                </form-single>
+            </widgets>
+        </section>
+    </widgets>
+</screen>

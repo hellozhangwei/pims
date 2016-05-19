@@ -1,0 +1,15 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
+        default-menu-title="Checklists" default-menu-index="4">
+
+    <parameter name="workEffortId"/>
+
+    <widgets>
+        <!--<section name="ProjectMenu" condition="project"><widgets>-->
+            <!--<link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>-->
+        <!--</widgets></section>-->
+        <widgets>
+            <label text="Checklists"/>
+        </widgets>
+    </widgets>
+</screen>
