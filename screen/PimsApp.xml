@@ -9,6 +9,7 @@
 
     <always-actions>
         <set field="appRoot" value="pims"/>
+        <set field="pimsAppRoot" value="apps/pims"/>
     </always-actions>
 
     <subscreens default-item="Project">

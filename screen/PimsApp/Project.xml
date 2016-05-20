@@ -4,16 +4,11 @@
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
         default-menu-title="Project" default-menu-index="1">
 
-    <subscreens default-item="FindProject"/>
-    <widgets>
-<!--
-        <section name="ProjectMenu" condition="workEffortId">
-            <widgets>
-                <subscreens-menu id="project-menu" type="tab"/>
-            </widgets>
-        </section>
-        <subscreens-active/>-->
+    <subscreens default-item="FindProject">
+        <subscreens-item name="system" menu-title="System" location="component://pims/screen/PimsApp/System/FindSystem.xml" menu-index="2"/>
+    </subscreens>
 
+    <widgets>
         <subscreens-panel id="project-menu" type="tab"/>
     </widgets>
 </screen>
