@@ -18,7 +18,16 @@
     <widgets>
 
         <container-panel id="pims-panel" dynamic="true">
-            <panel-left spacing="0"><subscreens-menu id="pims-menu" type="tab"/></panel-left>
+            <panel-left spacing="0">
+                <subscreens-menu id="pims-menu" type="tab"/>
+                <render-mode>
+                    <text type="html"><![CDATA[
+                       <script language="javascript">
+                            $("#pims-menu").attr("class", "nav nav-pills nav-stacked")
+                       </script>
+                    ]]></text>
+                </render-mode>
+            </panel-left>
             <panel-center><subscreens-active/></panel-center>
         </container-panel>
 
