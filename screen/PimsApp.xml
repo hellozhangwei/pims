@@ -5,11 +5,15 @@
         include-child-content="true" require-authentication="false" menu-image="glyphicon glyphicon-flash" menu-image-type="icon">
 
     <!--<macro-template type="html" location="template/screen-macro/TestScreenHtmlMacros.ftl"/>-->
-    <macro-template type="html" location="component://pims/screen-macro/PimsScreenHtmlMacros.ftl"/>
+    <!--<macro-template type="html" location="component://pims/screen-macro/PimsScreenHtmlMacros.ftl"/>-->
 
     <subscreens default-item="Project">
 
     </subscreens>
+
+    <pre-actions>
+        <script>html_scripts.add('/pimsstatic/lib/pims.js')</script>
+    </pre-actions>
 
     <widgets>
 

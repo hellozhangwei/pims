@@ -10,6 +10,9 @@
                                  subscreenName="Login" menuTitle="Pims Application" menuInclude="N"
                                  subscreenLocation="component://pims/screen/Login.xml"/>
 
+    <moqui.screen.SubscreensItem screenLocation="component://webroot/screen/webroot.xml"
+                                 subscreenName="pimsstatic" subscreenLocation="component://pims/screen/pimsstatic.xml"
+                                 menuInclude="N"/>
 
     <moqui.security.UserGroup userGroupId="PIMS_ADMIN" description="Pims Administrators"/>
 
