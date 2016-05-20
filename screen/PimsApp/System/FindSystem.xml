@@ -4,13 +4,9 @@
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
         default-menu-include="false">
 
-    <transition name="createSystem">
-        <service-call name="create#Asset"/>
-        <default-response url="."/>
-    </transition>
-
     <transition name="editSystem">
-        <default-response url="../EditSystem"/>
+        <default-response url="/apps/pims/screen/PimsApp/System/EditSystem"/>
+        <!--<default-response url="/apps/${appRoot}/System/EditSystem"/>-->
     </transition>
 
     <!--<transition name="deleteSystem">-->
@@ -25,37 +21,10 @@
     </actions>
 
     <widgets>
-        <container-dialog id="CreateSystem" button-text="Create System" width="800">
-            <form-single name="CreateSystem" transition="createSystem">
-                <field name="assetName">
-                    <default-field title="System Name"><text-line/></default-field>
-                </field>
-                <!--<field name="assetId">-->
-                    <!--<default-field title="Plant">-->
-                        <!--<drop-down style="chosen-wider">-->
-                            <!--<entity-options key="${facilityId}">-->
-                                <!--<entity-find entity-name="Facility">-->
-                                    <!--<econdition field-name="facilityTypeEnumId" operator="equals" value="FcTpPlant"/>-->
-                                <!--</entity-find>-->
-                            <!--</entity-options>-->
-                        <!--</drop-down>-->
-                    <!--</default-field>-->
-                <!--</field>-->
-
-                <field name="statusId" >
-                    <default-field title="StatusId"><text-area/></default-field>
-                </field>
-
-                <field name="submit button">
-                    <default-field title="Create"><submit/></default-field>
-                </field>
-            </form-single>
-        </container-dialog>
-
         <form-list name="ListSystem" list="SystemList">
                 <field name="assetId">
                     <header-field title="System Id" show-order-by="case-insensitive"/>
-                    <default-field><link url="editSystem" text="${assetId}"/></default-field>
+                    <default-field><link url="editSystem" text="${assetId}, ${ec.web.getWebappRootUrl(false, null)},${appRoot}"/></default-field>
                 </field>
             <field name="assetName">
                 <header-field title="System Name" show-order-by="case-insensitive"/>

@@ -7,6 +7,10 @@
     <!--<macro-template type="html" location="template/screen-macro/TestScreenHtmlMacros.ftl"/>-->
     <macro-template type="html" location="component://pims/screen-macro/PimsScreenHtmlMacros.ftl"/>
 
+    <always-actions>
+        <set field="appRoot" value="pims"/>
+    </always-actions>
+
     <subscreens default-item="Project">
 
     </subscreens>
