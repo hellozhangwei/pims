@@ -5,7 +5,9 @@
         default-menu-include="false">
 
     <transition name="createProject">
-        <service-call name="create#WorkEffort"/>
+        <service-call name="create#WorkEffort">
+            <field-map field-name="workEffortTypeEnumId" value="PimsProject"/>
+        </service-call>
         <default-response url="."/>
     </transition>
 
@@ -20,7 +22,7 @@
 
     <actions>
         <entity-find entity-name="WorkEffort" list="ProjectList" distinct="false">
-            <search-form-inputs/>
+            <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
         </entity-find>
     </actions>
 
