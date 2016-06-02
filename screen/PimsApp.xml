@@ -24,6 +24,11 @@
 
         <container-panel id="pims-panel" dynamic="true">
             <panel-left spacing="0">
+
+                <container style="pims-logo">
+                    <label text="Pims App Logo"/>
+                </container>
+
                 <subscreens-menu id="pims-menu" type="tab"/>
                 <render-mode>
                     <text type="html"><![CDATA[
