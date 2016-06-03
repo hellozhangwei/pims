@@ -48,7 +48,7 @@
                     <default-field title="Description"><text-area/></default-field>
                 </field>
 
-                <field name="submit button">
+                <field name="submitbutton">
                     <default-field title="Create"><submit/></default-field>
                 </field>
             </form-single>

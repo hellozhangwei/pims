@@ -4,14 +4,27 @@
 
     <parameter name="assetId"/>
 
-    <transition name="UpdateSystem"> <service-call name="update#Asset"/><default-response url="."/></transition>
+    <transition name="UpdateSystem">
+        <actions>
+            <service-call name="update#Asset" in-map="context"/>
+
+            <service-call name="delete#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
+
+            <set field="context.workEffortId" from="newWorkEffortId"/>
+            <service-call name="create#WorkEffortAssetAssign" in-map="context"/>
+        </actions>
+        <default-response url="."/>
+    </transition>
+
     <actions>
-        <entity-find-one entity-name="Asset" value-field="asset"/>
+        <entity-find-one entity-name="WorkEffortAssetAndAssign" value-field="asset"/>
     </actions>
     <widgets>
-        <section name="ProjectMenu" condition="project"><widgets>
-            <link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>
-        </widgets></section>
+        <section name="ProjectMenu" condition="project">
+            <widgets>
+                 <link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>
+            </widgets>
+        </section>
 
         <section name="Update">
             <condition>
@@ -22,20 +35,39 @@
                     <field name="assetId">
                         <default-field title="Asset Id">
                             <hidden/>
-                            <!--<text-line/>-->
+                        </default-field>
+                    </field>
+                    <field name="workEffortId">
+                        <default-field>
+                            <hidden/>
+                        </default-field>
+                    </field>
+                    <field name="fromDate">
+                        <default-field>
+                            <hidden/>
                         </default-field>
                     </field>
                     <field name="assetName">
-                        <default-field title="Asset Name">
+                        <default-field title="System Name">
                             <text-line/>
                         </default-field>
                     </field>
-                    <field name="statusId">
-                        <default-field title="statusId">
-                            <text-line/>
+                    <field name="newWorkEffortId">
+                        <default-field title="Project">
+                            <drop-down style="chosen-wider" no-current-selected-key="${workEffortId}" >
+                                <entity-options key="${workEffortId}" text="${workEffortName}">
+                                    <entity-find entity-name="WorkEffort">
+                                        <econdition field-name="workEffortTypeEnumId" operator="equals" value="PimsProject"/>
+                                    </entity-find>
+                                </entity-options>
+                            </drop-down>
                         </default-field>
                     </field>
-
+                    <field name="comments">
+                        <default-field title="comments">
+                            <text-area/>
+                        </default-field>
+                    </field>
                     <field name="submitButton">
                         <default-field title="Update">
                             <submit/>
