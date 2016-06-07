@@ -34,6 +34,6 @@
     <mantle.facility.Facility facilityId="PLAN_B" facilityTypeEnumId="FcTpPlant" facilityName="Plant B"/>
     <mantle.facility.Facility facilityId="PLAN_C" facilityTypeEnumId="FcTpPlant" facilityName="Plant C"/>
     <moqui.basic.Enumeration description="pims Project" enumId="PimsProject" enumTypeId="WorkEffortType"/>
-    <moqui.basic.Enumeration description="pims Project" enumId="PimsSystem" enumTypeId="AssetType"/>
+    <moqui.basic.Enumeration description="pims System" enumId="PimsSystem" enumTypeId="AssetType"/>
 
 </entity-facade-xml>
