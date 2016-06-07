@@ -8,7 +8,6 @@
         <actions>
             <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
                 <field-map field-name="assetTypeEnumId" value="PimsSystem"/>
-                <!--<moqui.basic.Enumeration description="pims System" enumId="PimsSystem" enumTypeId="AssetType"/></-->
             </service-call>
             <service-call name="create#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
         </actions>
@@ -21,8 +20,8 @@
 
     <actions>
         <entity-find entity-name="WorkEffortAndAsset" list="SystemList">
-            <!--<econdition field-name="assetId" ignore-if-empty="true"/>-->
             <econdition field-name="workEffortId" ignore-if-empty="true"/>
+            <econdition field-name="assetTypeEnumId" value="PimsSystem"/>
         </entity-find>
     </actions>
 
@@ -46,7 +45,6 @@
                 <field name="comments" >
                     <default-field title="Comments"><text-area/></default-field>
                 </field>
-
                 <field name="submitbutton">
                     <default-field title="Create"><submit/></default-field>
                 </field>
@@ -65,11 +63,6 @@
                 <header-field title="Project" show-order-by="case-insensitive"/>
                 <default-field><display/></default-field>
             </field>
-            <!--
-            <field name="comments">
-                <default-field><display/></default-field>
-            </field>
-            -->
         </form-list>
 
     </widgets>

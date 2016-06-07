@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
+        default-menu-title="SubSystem" default-menu-index="3">
+
+    <parameter name="workEffortId"/>
+
+    <transition-include name="createSubSystem" location="component://pims/screen/PimsApp/SubSystem/FindSubSystem.xml"/>
+    <transition-include name="editSubSystem" location="component://pims/screen/PimsApp/SubSystem/FindSubSystem.xml"/>
+
+    <widgets>
+        <include-screen location="component://pims/screen/PimsApp/SubSystem/FindSubSystem.xml"/>
+    </widgets>
+</screen>

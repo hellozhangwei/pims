@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.0.xsd">
+
     <view-entity entity-name="WorkEffortAndAsset" package-name="mantle.work.effort">
         <member-entity entity-alias="WEAA" entity-name="mantle.work.effort.WorkEffortAssetAssign"/>
         <member-entity entity-alias="WE" entity-name="mantle.work.effort.WorkEffort" join-from-alias="WEAA">
@@ -17,5 +18,22 @@
         </alias-all>
         <alias name="assetStatusId" entity-alias="AST" field="statusId"/>
         <relationship type="one-nofk" title="WorkEffortAssetAssign" related-entity-name="moqui.basic.StatusItem"/>
+    </view-entity>
+
+    <view-entity entity-name="SubSystemSystemProject" package-name="mantle.work.effort">
+        <member-entity entity-alias="SS1" entity-name="mantle.product.asset.Asset"/>
+        <member-entity entity-alias="SS2" entity-name="mantle.product.asset.Asset" join-from-alias="SS1">
+            <key-map field-name="parentAssetId" related-field-name="assetId"/>
+        </member-entity>
+        <member-entity entity-alias="WEAA" entity-name="mantle.work.effort.WorkEffortAssetAssign" join-from-alias="SS2">
+            <key-map field-name="assetId"/>
+        </member-entity>
+        <member-entity entity-alias="WE" entity-name="mantle.work.effort.WorkEffort" join-from-alias="WEAA">
+            <key-map field-name="workEffortId"/>
+        </member-entity>
+        <alias-all entity-alias="SS1"/>
+        <alias-all entity-alias="WEAA"/>
+        <alias-all entity-alias="WE"/>
+        <alias name="systemName" field="assetName" entity-alias="SS2"/>
     </view-entity>
 </entities>
