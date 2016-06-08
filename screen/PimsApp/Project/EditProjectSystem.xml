@@ -2,7 +2,7 @@
 
 <screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
-        default-menu-title="System" default-menu-index="2">
+        default-menu-title="Systems" default-menu-index="2">
 
     <parameter name="workEffortId"/>
 
