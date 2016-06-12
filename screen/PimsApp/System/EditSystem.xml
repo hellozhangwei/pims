@@ -12,6 +12,7 @@
 
             <set field="context.workEffortId" from="newWorkEffortId"/>
             <service-call name="create#WorkEffortAssetAssign" in-map="context"/>
+            <message>Update System successfully!</message>
         </actions>
         <default-response url="."/>
     </transition>

@@ -6,6 +6,7 @@
     <transition name="UpdateSubSystem">
         <actions>
             <service-call name="update#Asset" in-map="context"/>
+            <message>Update SubSystem successfully!</message>
         </actions>
         <default-response url="."/>
     </transition>

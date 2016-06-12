@@ -5,7 +5,10 @@
     <parameter name="workEffortId"/>
 
     <transition name="UpdateProject">
-        <service-call name="update#WorkEffort"/>
+        <actions>
+            <service-call name="update#WorkEffort" in-map="context"/>
+            <message>Update Project successfully!</message>
+        </actions>
         <default-response url="."/>
     </transition>
     <actions>
