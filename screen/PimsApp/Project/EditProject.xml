@@ -4,20 +4,19 @@
 
     <parameter name="workEffortId"/>
 
-    <!--<transition name="newExample">-->
-        <!--<default-response url=".">-->
-            <!--<parameter name="exampleId" value=""/>-->
-        <!--</default-response>-->
-    <!--</transition>-->
-
-    <transition name="UpdateProject"><service-call name="update#WorkEffort"/><default-response url="."/></transition>
+    <transition name="UpdateProject">
+        <service-call name="update#WorkEffort"/>
+        <default-response url="."/>
+    </transition>
     <actions>
         <entity-find-one entity-name="WorkEffort" value-field="workEffort"/>
     </actions>
     <widgets>
-        <section name="ProjectMenu" condition="project"><widgets>
-            <link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>
-        </widgets></section>
+        <section name="ProjectMenu" condition="project">
+            <widgets>
+                <link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>
+            </widgets>
+        </section>
         <section name="Update">
             <condition>
                 <compare field="workEffortId" operator="not-empty"/>
@@ -34,21 +33,43 @@
                             <text-line/>
                         </default-field>
                     </field>
+                    <field name="facilityId">
+                        <default-field title="Plant">
+                            <drop-down style="chosen-wider">
+                                <entity-options key="${facilityId}">
+                                    <entity-find entity-name="Facility">
+                                        <econdition field-name="facilityTypeEnumId" operator="equals"
+                                                    value="FcTpPlant"/>
+                                    </entity-find>
+                                </entity-options>
+                            </drop-down>
+                        </default-field>
+                    </field>
+                    <field name="leader">
+                        <default-field title="Leader">
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="statusId">
+                        <default-field title="Status">
+                            <widget-template-include
+                                    location="component://webroot/template/screen/BasicWidgetTemplates.xml#statusTransitionWithFlowDropDown">
+                                <set field="currentDescription"
+                                     from="workEffort?.'WorkEffort#moqui.basic.StatusItem'?.description"/>
+                                <set field="statusId" from="workEffort.statusId"/>
+                            </widget-template-include>
+                        </default-field>
+                    </field>
                     <field name="description">
                         <default-field title="Description">
                             <text-area/>
                         </default-field>
                     </field>
-
                     <field name="submitButton">
                         <default-field title="Update">
                             <submit/>
                         </default-field>
                     </field>
-
-                    <!--<field-layout id="testDate">-->
-                        <!--<field-row><field-ref name="testDate"/><field-ref name="testTime"/></field-row>-->
-                    <!--</field-layout>-->
                 </form-single>
             </widgets>
         </section>

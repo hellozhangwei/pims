@@ -22,6 +22,7 @@
             <econdition field-name="workEffortId" ignore-if-empty="true"/>
             <econdition field-name="parentAssetId" from="assetId" ignore-if-empty="true"/>
             <econdition field-name="assetTypeEnumId" value="PimsSubSystem"/>
+            <order-by field-name="-assetId"/>
         </entity-find>
     </actions>
 
