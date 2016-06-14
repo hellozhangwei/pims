@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget-templates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd">
+    <!--Plant-->
+    <widget-template name="PlantDropDown">
+        <drop-down>
+            <entity-options key="${facilityId}">
+                <entity-find entity-name="Facility">
+                    <econdition field-name="facilityTypeEnumId" operator="equals" value="FcTpPlant"/>
+                    <order-by field-name="facilityId"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
+<!--Project-->
+    <widget-template name="PimsProjectDropDown">
+        <!--<drop-down no-current-selected-key="N" current="selected">-->
+        <drop-down no-current-selected-key="${noCurrentSelectedKey?:''}">
+            <entity-options key="${workEffortId}" text="${workEffortName}">
+                <entity-find entity-name="WorkEffort">
+                    <econdition field-name="workEffortTypeEnumId" operator="equals" value="PimsProject"/>
+                    <order-by field-name="workEffortId"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
+    <!--System-->
+    <widget-template name="PimsSystemDropDown">
+        <drop-down>
+            <entity-options key="${assetId}" text="${assetName}">
+                <entity-find entity-name="Asset">
+                    <econdition field-name="assetTypeEnumId" operator="equals" value="PimsSystem"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
+
+    <!--<widget-template name="parentAssetIdDropDown">-->
+        <!--<drop-down>-->
+            <!--<entity-options key="${assetId}" text="${assetName}">-->
+                <!--<entity-find entity-name="Asset">-->
+                    <!--<econdition field-name="parentAssetId"/>-->
+                    <!--<order-by field-name="assetId"/>-->
+                <!--</entity-find>-->
+            <!--</entity-options>-->
+        <!--</drop-down>-->
+    <!--</widget-template>-->
+    <!---->
+    <!--<widget-template name="workEffortNameDropDown">-->
+        <!--<drop-down>-->
+            <!--<entity-options key="${workEffortId}" text="${workEffortName}">-->
+                <!--<entity-find entity-name="WorkEffort">-->
+                    <!--<econdition field-name="workEffortTypeEnumId" value="PimsProject"/>-->
+                    <!--<select-field field-name="workEffortId"/>-->
+                    <!--<select-field field-name="workEffortName"/>-->
+                    <!--<order-by field-name="workEffortName"/>-->
+                <!--</entity-find>-->
+            <!--</entity-options>-->
+        <!--</drop-down>-->
+    <!--</widget-template>-->
+</widget-templates>

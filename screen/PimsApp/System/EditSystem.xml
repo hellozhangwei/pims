@@ -55,13 +55,9 @@
                     </field>
                     <field name="newWorkEffortId">
                         <default-field title="Project">
-                            <drop-down style="chosen-wider" no-current-selected-key="${workEffortId}" >
-                                <entity-options key="${workEffortId}" text="${workEffortName}">
-                                    <entity-find entity-name="WorkEffort">
-                                        <econdition field-name="workEffortTypeEnumId" operator="equals" value="PimsProject"/>
-                                    </entity-find>
-                                </entity-options>
-                            </drop-down>
+                            <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsProjectDropDown">
+                                <set field="noCurrentSelectedKey" value="${workEffortId}"/>
+                            </widget-template-include>
                         </default-field>
                     </field>
                     <field name="comments">

@@ -14,12 +14,6 @@
     <transition name="editProject">
         <default-response url="../EditProject"/>
     </transition>
-
-    <transition name="deleteProject">
-        <service-call name="project.RequestServices.delete#Project"/>
-        <default-response url="."/>
-    </transition>
-
     <actions>
         <entity-find entity-name="WorkEffort" list="ProjectList" distinct="false">
             <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
@@ -37,13 +31,7 @@
                 </field>
                 <field name="facilityId">
                     <default-field title="Plant">
-                        <drop-down style="chosen-wider">
-                            <entity-options key="${facilityId}">
-                                <entity-find entity-name="Facility">
-                                    <econdition field-name="facilityTypeEnumId" operator="equals" value="FcTpPlant"/>
-                                </entity-find>
-                            </entity-options>
-                        </drop-down>
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
                     </default-field>
                 </field>
                 <field name="leader">
@@ -51,12 +39,10 @@
                         <text-line/>
                     </default-field>
                 </field>
-                <field name="statusId" validate-field="description">
+                <field name="statusId" validate-field="description" >
                     <default-field title="Status">
-                        <widget-template-include
-                                location="component://webroot/template/screen/BasicWidgetTemplates.xml#statusDropDown">
-                            <set field="statusTypeId" value="WorkEffort"/>
-                        </widget-template-include>
+                        <widget-template-include location="component://webroot/template/screen/BasicWidgetTemplates.xml#statusDropDown">
+                            <set field="statusTypeId" value="WorkEffort"/><set field="allowEmpty" value="true"/></widget-template-include>
                     </default-field>
                 </field>
                 <field name="description">

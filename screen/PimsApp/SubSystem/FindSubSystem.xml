@@ -34,13 +34,10 @@
                 </field>
                 <field name="parentAssetId" validate-parameter="assetId">
                     <default-field title="System Name">
-                        <drop-down style="chosen-wider">
-                            <entity-options key="${assetId}" text="${assetName}">
-                                <entity-find entity-name="Asset">
-                                    <econdition field-name="parentAssetId"/>
-                                </entity-find>
-                            </entity-options>
-                        </drop-down>
+                        <widget-template-include
+                                location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsSystemDropDown">
+                            <set field="assetId"/>
+                        </widget-template-include>
                     </default-field>
                 </field>
                 <field name="comments" >

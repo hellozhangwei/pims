@@ -38,14 +38,7 @@
                     </field>
                     <field name="facilityId">
                         <default-field title="Plant">
-                            <drop-down style="chosen-wider">
-                                <entity-options key="${facilityId}">
-                                    <entity-find entity-name="Facility">
-                                        <econdition field-name="facilityTypeEnumId" operator="equals"
-                                                    value="FcTpPlant"/>
-                                    </entity-find>
-                                </entity-options>
-                            </drop-down>
+                            <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
                         </default-field>
                     </field>
                     <field name="leader">
@@ -53,14 +46,10 @@
                             <text-line/>
                         </default-field>
                     </field>
-                    <field name="statusId">
+                    <field name="statusId" validate-field="description" >
                         <default-field title="Status">
-                            <widget-template-include
-                                    location="component://webroot/template/screen/BasicWidgetTemplates.xml#statusTransitionWithFlowDropDown">
-                                <set field="currentDescription"
-                                     from="workEffort?.'WorkEffort#moqui.basic.StatusItem'?.description"/>
-                                <set field="statusId" from="workEffort.statusId"/>
-                            </widget-template-include>
+                            <widget-template-include location="component://webroot/template/screen/BasicWidgetTemplates.xml#statusDropDown">
+                                <set field="statusTypeId" value="WorkEffort"/><set field="allowEmpty" value="true"/></widget-template-include>
                         </default-field>
                     </field>
                     <field name="description">
