@@ -11,4 +11,15 @@
             <service-call name="delete#mantle.work.effort.WorkEffort" in-map="context"/>
         </actions>
     </service>
+
+    <service verb="create" noun="Project" type="inline">
+        <in-parameters>
+            <parameter name="workEffortId" required="true"/>
+            <auto-parameters entity-name="mantle.work.effort.WorkEffort" include="nonpk"/>
+            <parameter name="workEffortName" required="true"/>
+        </in-parameters>
+        <actions>
+            <service-call name="create#mantle.work.effort.WorkEffort" out-map="context" in-map="context"/>
+        </actions>
+    </service>
 </services>

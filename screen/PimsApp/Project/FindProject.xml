@@ -5,7 +5,7 @@
         default-menu-include="false">
 
     <transition name="createProject">
-        <service-call name="create#WorkEffort" in-map="context">
+        <service-call name="project.ProjectServices.create#Project" in-map="context">
             <field-map field-name="workEffortTypeEnumId" value="PimsProject"/>
         </service-call>
         <default-response url="."/>
@@ -31,7 +31,8 @@
                 </field>
                 <field name="facilityId">
                     <default-field title="Plant">
-                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
+                        <widget-template-include
+                                location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
                     </default-field>
                 </field>
                 <field name="leader">
@@ -39,10 +40,11 @@
                         <text-line/>
                     </default-field>
                 </field>
-                <field name="statusId" validate-field="description" >
+                <field name="statusId">
                     <default-field title="Status">
                         <widget-template-include location="component://webroot/template/screen/BasicWidgetTemplates.xml#statusDropDown">
-                            <set field="statusTypeId" value="WorkEffort"/><set field="allowEmpty" value="true"/></widget-template-include>
+                            <set field="statusTypeId" value="WorkEffort"/>
+                        </widget-template-include>
                     </default-field>
                 </field>
                 <field name="description">
@@ -72,7 +74,7 @@
                 </default-field>
             </field>
             <field name="statusId">
-               <header-field title="Status"/>
+                <header-field title="Status"/>
                 <default-field title="Status">
                     <display-entity entity-name="StatusItem" key-field-name="statusId" text="${description}"/>
                 </default-field>
