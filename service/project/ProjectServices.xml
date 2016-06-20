@@ -19,7 +19,15 @@
             <parameter name="workEffortName" required="true"/>
         </in-parameters>
         <actions>
+            <entity-find entity-name="WorkEffort" list="projectList">
+                <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
+                <econdition field-name="workEffortName" value="${workEffortName}" operator="equals"/>
+            </entity-find>
+            <if condition="projectList">
+                 <return error="true" message="Project name is already exist!"/>
+            </if>
             <service-call name="create#mantle.work.effort.WorkEffort" out-map="context" in-map="context"/>
         </actions>
     </service>
+
 </services>
