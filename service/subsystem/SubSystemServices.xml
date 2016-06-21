@@ -1,14 +1,10 @@
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.0.xsd">
-    <service verb="create" noun="System" type="inline">
+    <service verb="create" noun="SubSystem" type="inline">
         <in-parameters>
             <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
             <parameter name="assetName" required="true"/>
-            <parameter name="workEffortId" required="true"/>
         </in-parameters>
-        <out-parameters>
-            <parameter name="assetId" required="true"/>
-        </out-parameters>
         <actions>
             <entity-find entity-name="Asset" list="assetList">
                 <econdition field-name="assetTypeEnumId" value="PimsSystem"/>
@@ -18,9 +14,8 @@
                 <return error="true" message="System name is already exist!"/>
             </if>
             <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
-                <field-map field-name="assetTypeEnumId" value="PimsSystem"/>
+                <field-map field-name="assetTypeEnumId" value="PimsSubSystem"/>
             </service-call>
-            <service-call name="create#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
         </actions>
     </service>
 </services>
