@@ -46,10 +46,11 @@
                             <text-line/>
                         </default-field>
                     </field>
-                    <field name="statusId" validate-field="description" >
+                    <field name="statusId">
                         <default-field title="Status">
                             <widget-template-include location="component://webroot/template/screen/BasicWidgetTemplates.xml#statusDropDown">
-                                <set field="statusTypeId" value="WorkEffort"/><set field="allowEmpty" value="true"/></widget-template-include>
+                                <set field="statusTypeId" value="WorkEffort"/>
+                            </widget-template-include>
                         </default-field>
                     </field>
                     <field name="description">

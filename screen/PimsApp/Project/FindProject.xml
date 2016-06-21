@@ -31,8 +31,7 @@
                 </field>
                 <field name="facilityId">
                     <default-field title="Plant">
-                        <widget-template-include
-                                location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
                     </default-field>
                 </field>
                 <field name="leader">
@@ -59,7 +58,6 @@
                 </field>
             </form-single>
         </container-dialog>
-
         <form-list name="ListProjects" list="ProjectList">
             <field name="workEffortId">
                 <header-field title="Project Id" show-order-by="case-insensitive"/>

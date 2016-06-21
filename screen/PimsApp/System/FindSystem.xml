@@ -6,7 +6,7 @@
 
     <transition name="createSystem">
         <actions>
-            <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
+            <service-call name="system.SystemServices.create#System" in-map="context" out-map="context">
                 <field-map field-name="assetTypeEnumId" value="PimsSystem"/>
             </service-call>
             <service-call name="create#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
@@ -34,7 +34,7 @@
                 </field>
                 <field name="workEffortId">
                     <default-field title="Project">
-                        <widget-template-include  location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsProjectDropDown"/>
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsProjectDropDown"/>
                     </default-field>
                 </field>
                 <field name="comments" >
