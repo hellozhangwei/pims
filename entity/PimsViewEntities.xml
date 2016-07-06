@@ -2,7 +2,7 @@
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.0.xsd">
 
-    <view-entity entity-name="WorkEffortAndAsset" package-name="mantle.work.effort">
+    <view-entity entity-name="SystemAndProject" package-name="mantle.work.effort">
         <member-entity entity-alias="WEAA" entity-name="mantle.work.effort.WorkEffortAssetAssign"/>
         <member-entity entity-alias="WE" entity-name="mantle.work.effort.WorkEffort" join-from-alias="WEAA">
             <key-map field-name="workEffortId"/>
@@ -11,10 +11,14 @@
             <key-map field-name="assetId"/>
         </member-entity>
         <alias-all entity-alias="WEAA"/>
-        <alias-all entity-alias="WE"/>
+        <alias-all entity-alias="WE">
+            <exclude field="ownerPartyId"/>
+            <exclude field="statusId"/>
+        </alias-all>
         <alias-all entity-alias="AST">
             <exclude field="statusId"/>
             <exclude field="comments"/>
+            <exclude field="facilityId"/>
         </alias-all>
         <alias name="assetStatusId" entity-alias="AST" field="statusId"/>
         <relationship type="one-nofk" title="WorkEffortAssetAssign" related-entity-name="moqui.basic.StatusItem"/>
@@ -31,9 +35,18 @@
         <member-entity entity-alias="WE" entity-name="mantle.work.effort.WorkEffort" join-from-alias="WEAA">
             <key-map field-name="workEffortId"/>
         </member-entity>
-        <alias-all entity-alias="SS1"/>
-        <alias-all entity-alias="WEAA"/>
-        <alias-all entity-alias="WE"/>
+        <alias-all entity-alias="SS1">
+            <exclude field="facilityId"/>
+        </alias-all>
+        <alias-all entity-alias="WEAA">
+            <exclude field="statusId"/>
+            <exclude field="comments"/>
+        </alias-all>
+        <alias-all entity-alias="WE">
+            <exclude field="ownerPartyId"/>
+            <exclude field="statusId"/>
+        </alias-all>
+
         <alias name="systemName" field="assetName" entity-alias="SS2"/>
     </view-entity>
 </entities>

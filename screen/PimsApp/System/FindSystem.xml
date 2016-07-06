@@ -14,7 +14,7 @@
     </transition>
 
     <actions>
-        <entity-find entity-name="WorkEffortAndAsset" list="SystemList">
+        <entity-find entity-name="SystemAndProject" list="SystemList">
             <econdition field-name="workEffortId" ignore-if-empty="true"/>
             <econdition field-name="assetTypeEnumId" value="PimsSystem"/>
             <order-by field-name="-assetId"/>
