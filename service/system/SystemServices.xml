@@ -11,14 +11,14 @@
         </out-parameters>
         <actions>
             <entity-find entity-name="Asset" list="assetList">
-                <econdition field-name="assetTypeEnumId" value="PimsSystem"/>
+                <econdition field-name="classEnumId" value="PimsSystem"/>
                 <econdition field-name="assetName" value="${assetName}" operator="equals"/>
             </entity-find>
             <if condition="assetList">
                 <return error="true" message="System name is already exist!"/>
             </if>
             <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
-                <field-map field-name="assetTypeEnumId" value="PimsSystem"/>
+                <field-map field-name="classEnumId" value="PimsSystem"/>
             </service-call>
             <service-call name="create#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
         </actions>

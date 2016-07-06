@@ -16,7 +16,7 @@
     <actions>
         <entity-find entity-name="SystemAndProject" list="SystemList">
             <econdition field-name="workEffortId" ignore-if-empty="true"/>
-            <econdition field-name="assetTypeEnumId" value="PimsSystem"/>
+            <econdition field-name="classEnumId" value="PimsSystem"/>
             <order-by field-name="-assetId"/>
         </entity-find>
     </actions>
