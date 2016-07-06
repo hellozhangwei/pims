@@ -5,4 +5,10 @@
         <field name="leader" type="text-short"/>
     </extend-entity>
 
+    <extend-entity entity-name="Asset" package-name="mantle.product.asset">
+        <field name="typeEnumId" type="text-short"/>
+        <field name="functionCodeEnumId" type="text-short"/>
+        <field name="disciplineEnumId" type="text-short"/>
+        <field name="areaEnumId" type="text-short"/>
+    </extend-entity>
 </entities>

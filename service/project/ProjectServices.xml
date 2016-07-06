@@ -14,7 +14,6 @@
 
     <service verb="create" noun="Project" type="inline">
         <in-parameters>
-            <parameter name="workEffortId" required="true"/>
             <auto-parameters entity-name="mantle.work.effort.WorkEffort" include="nonpk"/>
             <parameter name="workEffortName" required="true"/>
         </in-parameters>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-facade-xml type="demo">
+    <mantle.party.Party partyId="pims_test" partyTypeEnumId="PtyPerson"/>
+    <moqui.security.UserAccount userId="pims_test"  partyId="pims_test" username="pims_test" userFullName="Test Pims"
+                                currentPassword="16ac58bbfa332c1c55bd98b53e60720bfa90d394" passwordHashType="SHA"
+                                passwordHint="framework name, lowercase" currencyUomId="USD" locale="en_US" timeZone="US/Central"
+                                emailAddress="pmis@test.com"/>
+
+    <moqui.security.UserGroupMember userGroupId="PIMS_ADMIN" userId="pims_test" fromDate="1265184000000"/>
+
+    <mantle.facility.Facility facilityId="PLAN_A" facilityTypeEnumId="FcTpPlant" facilityName="Plant A"/>
+    <mantle.facility.Facility facilityId="PLAN_B" facilityTypeEnumId="FcTpPlant" facilityName="Plant B"/>
+    <mantle.facility.Facility facilityId="PLAN_C" facilityTypeEnumId="FcTpPlant" facilityName="Plant C"/>
+
+
+    <moqui.basic.EnumerationType description="pims Tag Type" enumTypeId="TagType"/>
+    <moqui.basic.Enumeration description="Tag Type A" enumId="TagTypeA" enumTypeId="TagType"/>
+    <moqui.basic.Enumeration description="Tag Type B" enumId="TagTypeB" enumTypeId="TagType"/>
+
+    <moqui.basic.EnumerationType description="pims Tag Function Code" enumTypeId="TagFunctionCode"/>
+    <moqui.basic.Enumeration description="Tag Function Code A" enumId="TagFunctionCodeA" enumTypeId="TagFunctionCode"/>
+    <moqui.basic.Enumeration description="Tag Function Code B" enumId="TagFunctionCodeB" enumTypeId="TagFunctionCode"/>
+
+    <moqui.basic.EnumerationType description="pims Discipline" enumTypeId="TagDiscipline"/>
+    <moqui.basic.Enumeration description="Tag Discipline A" enumId="TagDisciplineA" enumTypeId="TagDiscipline"/>
+    <moqui.basic.Enumeration description="Tag Discipline B" enumId="TagDisciplineB" enumTypeId="TagDiscipline"/>
+
+    <moqui.basic.EnumerationType description="pims Area" enumTypeId="TagArea"/>
+    <moqui.basic.Enumeration description="Tag Area A" enumId="TagAreaA" enumTypeId="TagArea"/>
+    <moqui.basic.Enumeration description="Tag Area B" enumId="TagAreaB" enumTypeId="TagArea"/>
+
+
+</entity-facade-xml>

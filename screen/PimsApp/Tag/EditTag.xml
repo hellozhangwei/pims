@@ -1,0 +1,64 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
+        default-menu-title="Tag" default-menu-index="3">
+
+    <parameter name="assetId"/>
+    <transition name="UpdateTag">
+        <actions>
+            <service-call name="update#Asset" in-map="context"/>
+            <message>Update Tag successfully!</message>
+        </actions>
+        <default-response url="."/>
+    </transition>
+
+    <actions>
+        <entity-find-one entity-name="Asset" value-field="asset"/>
+    </actions>
+    <widgets>
+        <section name="ProjectMenu" condition="project">
+            <widgets>
+                <link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>
+            </widgets>
+        </section>
+
+        <section name="Update">
+            <condition>
+                <compare field="assetId" operator="not-empty"/>
+            </condition>
+            <widgets>
+                <form-single name="EditTag" transition="UpdateTag" map="asset">
+                    <field name="assetId">
+                        <default-field title="Asset Id">
+                            <hidden/>
+                        </default-field>
+                    </field>
+                    <field name="assetName">
+                        <default-field title="Tag Name">
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="parentAssetId">
+                        <default-field title="SubSystem Name">
+                            <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsSystemDropDown"/>
+                        </default-field>
+                    </field>
+                    <field name="facilityId">
+                        <default-field title="Plant">
+                            <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
+                        </default-field>
+                    </field>
+                    <field name="comments">
+                        <default-field title="comments">
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="submitButton">
+                        <default-field title="Update">
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </widgets>
+        </section>
+    </widgets>
+</screen>

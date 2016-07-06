@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
+        default-menu-include="false">
+
+    <transition name="createTag">
+        <service-call name="tag.TagServices.create#Tag" in-map="context" out-map="context"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="editTag">
+        <default-response url="/${pimsAppRoot}/Tag/EditTag"/>
+    </transition>
+
+    <transition name="getSystem">
+        <actions>
+            <entity-find-one entity-name="SubSystemSystemProject" value-field="system">
+                <field-map field-name="assetId" from="context.assetId"/>
+                <select-field field-name="systemName"/>
+                <select-field field-name="workEffortName"/>
+            </entity-find-one>
+            <script>ec.web.sendJsonResponse(system)</script>
+        </actions>
+        <default-response type="none"/>
+    </transition>
+
+    <actions>
+        <entity-find entity-name="Asset" list="TagList">
+            <econdition field-name="workEffortId" ignore-if-empty="true"/>
+            <econdition field-name="parentAssetId" from="assetId" ignore-if-empty="true"/>
+            <econdition field-name="classEnumId" value="PimsTag"/>
+            <order-by field-name="-assetId"/>
+        </entity-find>
+    </actions>
+
+    <widgets>
+        <container-dialog id="CreateTag" button-text="Create Tag" width="800">
+            <form-single name="CreateTag" transition="createTag">
+                <field name="assetName">
+                    <default-field title="Tag Name"><text-line/></default-field>
+                </field>
+                <field name="typeEnumId" validate-field="enumId">
+                    <default-field title="Type Id">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagTypeDropDown"/>
+                    </default-field>
+                </field>
+                <field name="functionEnumId" validate-field="enumId">
+                    <default-field title="Function Code">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagFunctionCodeDropDown"/>
+                    </default-field>
+                </field>
+                <field name="discipline">
+                    <default-field title="Discipline">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagDisciplineDropDown"/>
+                    </default-field>
+                </field>
+                <field name="area">
+                    <default-field title="Area">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagAreaDropDown"/>
+                    </default-field>
+                </field>
+                <field name="parentAssetId" validate-parameter="assetId">
+                    <default-field title="Current SubSystem">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsSubSystemDropDown"/>
+                    </default-field>
+                </field>
+                <field name="systemName">
+                    <default-field title="Current System"><text-line disabled="true"/></default-field>
+                </field>
+                <field name="workEffortName" validate-field="workEffortName">
+                    <default-field title="Current Project"><text-line disabled="true"/></default-field>
+                </field>
+                <field name="comments">
+                    <default-field title="comments"><text-line/></default-field>
+                </field>
+                <field name="submitbutton">
+                    <default-field title="Create"><submit/></default-field>
+                </field>
+            </form-single>
+            <render-mode>
+                <text type="html"><![CDATA[
+                       <script language="javascript">
+                            $("#CreateTag_parentAssetId").change(function(){
+                                $.ajax({
+                                    type: "POST",
+                                    url: "${sri.screenUrlInstance.url}/getSystem",
+                                    data:{ assetId:$(this).val(),moquiSessionToken: "${(ec.web.sessionToken)!}"},
+                                    success: function(data) {
+                                        <!--console.log("======success===data=====" + data);-->
+                                        $("#CreateTag_systemName").val(data.systemName);
+                                        $("#CreateTag_workEffortName").val(data.workEffortName);
+                                       },
+                                    error: function(data) {
+                                            console.log("======error===data=====" + data);
+                                            }
+                                    });
+                            });
+                       </script>
+                    ]]></text>
+            </render-mode>
+        </container-dialog>
+        <form-list name="ListTag" list="TagList">
+            <field name="assetId">
+                <header-field title="Tag No" show-order-by="case-insensitive"/>
+                <default-field><link url="editTag" text="${assetId}"/></default-field>
+            </field>
+            <field name="assetName">
+                <header-field title="Tag Name" show-order-by="case-insensitive"/>
+                <default-field><display/></default-field>
+            </field>
+            <field name="comments">
+                <default-field title="Comments"><display/></default-field>
+            </field>
+            <field name="facilityId">
+                <header-field title="Plant" show-order-by="case-insensitive"/>
+                <default-field><display/></default-field>
+            </field>
+        </form-list>
+    </widgets>
+</screen>

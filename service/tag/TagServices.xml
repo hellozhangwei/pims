@@ -1,0 +1,28 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.0.xsd">
+    <service verb="create" noun="Tag" type="inline">
+        <in-parameters>
+            <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
+            <parameter name="assetName" required="true"/>
+        </in-parameters>
+        <!--<out-parameters>-->
+            <!--<parameter name="assetId" required="true"/>-->
+            <!--<parameter name="workEffortId" required="true"/>-->
+        <!--</out-parameters>-->
+        <actions>
+            <entity-find entity-name="Asset" list="assetList">
+                <econdition field-name="classEnumId" value="PimsTag"/>
+                <econdition field-name="assetName" value="${assetName}" operator="equals"/>
+            </entity-find>
+            <if condition="assetList">
+                <return error="true" message="Tag name is already exist!"/>
+            </if>
+            <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
+                <field-map field-name="classEnumId" value="PimsTag"/>
+            </service-call>
+            <!--<service-call name="create#mantle.work.effort.WorkEffortAssetAssign" in-map="context">-->
+                <!--<field-map field-name="workEffortId" from="workEffortName"/>-->
+            <!--</service-call>-->
+        </actions>
+    </service>
+</services>

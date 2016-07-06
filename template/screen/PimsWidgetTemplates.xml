@@ -14,7 +14,6 @@
     </widget-template>
 <!--Project-->
     <widget-template name="PimsProjectDropDown">
-        <!--<drop-down no-current-selected-key="N" current="selected">-->
         <drop-down no-current-selected-key="${noCurrentSelectedKey?:''}">
             <entity-options key="${workEffortId}" text="${workEffortName}">
                 <entity-find entity-name="WorkEffort">
@@ -24,9 +23,19 @@
             </entity-options>
         </drop-down>
     </widget-template>
+    <!--SubSystem-->
+    <widget-template name="PimsSubSystemDropDown">
+        <drop-down allow-empty="true">
+            <entity-options key="${assetId}" text="${assetName}">
+                <entity-find entity-name="Asset">
+                    <econdition field-name="assetTypeEnumId" operator="equals" value="PimsSubSystem"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
     <!--System-->
     <widget-template name="PimsSystemDropDown">
-        <drop-down>
+        <drop-down allow-empty="true">
             <entity-options key="${assetId}" text="${assetName}">
                 <entity-find entity-name="Asset">
                     <econdition field-name="classEnumId" operator="equals" value="PimsSystem"/>
@@ -34,7 +43,42 @@
             </entity-options>
         </drop-down>
     </widget-template>
-
+    <widget-template name="TagTypeDropDown">
+        <drop-down allow-empty="true">
+            <entity-options key="${enumId}" text="${description}">
+                <entity-find entity-name="Enumeration">
+                    <econdition field-name="enumTypeId" operator="equals" value="TagType"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
+    <widget-template name="TagFunctionCodeDropDown">
+        <drop-down allow-empty="true">
+            <entity-options key="${enumId}" text="${description}">
+                <entity-find entity-name="Enumeration">
+                    <econdition field-name="enumTypeId" operator="equals" value="TagFunctionCode"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
+    <widget-template name="TagDisciplineDropDown">
+        <drop-down allow-empty="true">
+            <entity-options key="${enumId}" text="${description}">
+                <entity-find entity-name="Enumeration">
+                    <econdition field-name="enumTypeId" operator="equals" value="TagDiscipline"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
+    <widget-template name="TagAreaDropDown">
+        <drop-down allow-empty="true" >
+            <entity-options key="${enumId}" text="${description}">
+                <entity-find entity-name="Enumeration" >
+                    <econdition field-name="enumTypeId" operator="equals" value="TagArea"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
     <!--<widget-template name="parentAssetIdDropDown">-->
         <!--<drop-down>-->
             <!--<entity-options key="${assetId}" text="${assetName}">-->
