@@ -4,7 +4,7 @@
     <!--Plant-->
     <widget-template name="PlantDropDown">
         <drop-down>
-            <entity-options key="${facilityId}">
+            <entity-options key="${facilityId}" text="${facilityName}">
                 <entity-find entity-name="Facility">
                     <econdition field-name="facilityTypeEnumId" operator="equals" value="FcTpPlant"/>
                     <order-by field-name="facilityId"/>
