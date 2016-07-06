@@ -46,7 +46,7 @@
                     </field>
                     <field name="comments">
                         <default-field title="comments">
-                            <text-line/>
+                            <text-area/>
                         </default-field>
                     </field>
                     <field name="submitButton">
