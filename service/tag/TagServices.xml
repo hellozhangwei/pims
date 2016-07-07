@@ -5,10 +5,6 @@
             <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
             <parameter name="assetName" required="true"/>
         </in-parameters>
-        <!--<out-parameters>-->
-            <!--<parameter name="assetId" required="true"/>-->
-            <!--<parameter name="workEffortId" required="true"/>-->
-        <!--</out-parameters>-->
         <actions>
             <entity-find entity-name="Asset" list="assetList">
                 <econdition field-name="classEnumId" value="PimsTag"/>
@@ -20,9 +16,6 @@
             <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
                 <field-map field-name="classEnumId" value="PimsTag"/>
             </service-call>
-            <!--<service-call name="create#mantle.work.effort.WorkEffortAssetAssign" in-map="context">-->
-                <!--<field-map field-name="workEffortId" from="workEffortName"/>-->
-            <!--</service-call>-->
         </actions>
     </service>
 </services>

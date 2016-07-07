@@ -17,6 +17,9 @@
             <auto-parameters entity-name="mantle.work.effort.WorkEffort" include="nonpk"/>
             <parameter name="workEffortName" required="true"/>
         </in-parameters>
+        <out-parameters>
+            <parameter name="workEffortId" required="true"/>
+        </out-parameters>
         <actions>
             <entity-find entity-name="WorkEffort" list="projectList">
                 <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
@@ -25,7 +28,9 @@
             <if condition="projectList">
                  <return error="true" message="Project name is already exist!"/>
             </if>
-            <service-call name="create#mantle.work.effort.WorkEffort" out-map="context" in-map="context"/>
+            <service-call name="create#mantle.work.effort.WorkEffort" out-map="context" in-map="context">
+                <field-map field-name="workEffortTypeEnumId" value="PimsProject"/>
+            </service-call>
         </actions>
     </service>
 
