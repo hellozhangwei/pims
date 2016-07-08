@@ -4,6 +4,7 @@
         <in-parameters>
             <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
             <parameter name="assetName" required="true"/>
+            <parameter name="partyId" required="true"/>
         </in-parameters>
         <actions>
             <entity-find entity-name="Asset" list="assetList">
@@ -15,6 +16,9 @@
             </if>
             <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
                 <field-map field-name="classEnumId" value="PimsTag"/>
+            </service-call>
+            <service-call name="create#mantle.product.asset.AssetPartyAssignment" in-map="context">
+                <field-map field-name="roleTypeId" value="Contractor"/>
             </service-call>
         </actions>
     </service>

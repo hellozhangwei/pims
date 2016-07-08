@@ -30,5 +30,20 @@
     <moqui.basic.Enumeration description="Tag Area A" enumId="TagAreaA" enumTypeId="TagArea"/>
     <moqui.basic.Enumeration description="Tag Area B" enumId="TagAreaB" enumTypeId="TagArea"/>
 
+    <moqui.basic.EnumerationType description="pims Location" enumTypeId="TagLocation"/>
+    <moqui.basic.Enumeration description="Tag Location A" enumId="TagLocationA" enumTypeId="TagLocation"/>
+    <moqui.basic.Enumeration description="Tag Location B" enumId="TagLocationB" enumTypeId="TagLocation"/>
+
+    <Party partyId="Demo_001" partyTypeEnumId="PtyPerson"/>
+    <Person partyId="Demo_001" firstName="john" lastName="smith"/>
+    <PartyRole partyId="Demo_001" roleTypeId="Contractor"/>
+
+    <Party partyId="Demo_002" partyTypeEnumId="PtyPerson"/>
+    <Person partyId="Demo_002" firstName="tom" lastName="smith"/>
+    <PartyRole partyId="Demo_002" roleTypeId="Contractor"/>
+
+
+
+
 
 </entity-facade-xml>

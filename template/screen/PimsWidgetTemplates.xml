@@ -79,6 +79,24 @@
             </entity-options>
         </drop-down>
     </widget-template>
+    <widget-template name="TagLocationDropDown">
+        <drop-down allow-empty="true" >
+            <entity-options key="${enumId}" text="${description}">
+                <entity-find entity-name="Enumeration" >
+                    <econdition field-name="enumTypeId" operator="equals" value="TagLocation"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
+    <widget-template name="TagContractorDropDown">
+        <drop-down allow-empty="true">
+            <entity-options key="${partyId}" text="${organizationName?:''} ${firstName?:''} ${lastName?:''}">
+                <entity-find entity-name="mantle.party.PartyDetailAndRole" >
+                    <econdition field-name="roleTypeId" operator="equals" value="Contractor"/>
+                </entity-find>
+            </entity-options>
+        </drop-down>
+    </widget-template>
     <!--<widget-template name="parentAssetIdDropDown">-->
         <!--<drop-down>-->
             <!--<entity-options key="${assetId}" text="${assetName}">-->

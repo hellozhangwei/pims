@@ -38,7 +38,7 @@
         <container-dialog id="CreateTag" button-text="Create Tag" width="800">
             <form-single name="CreateTag" transition="createTag">
                 <field name="assetName">
-                    <default-field title="Tag Name"><text-line/></default-field>
+                    <default-field title="Tag No"><text-line/></default-field>
                 </field>
                 <field name="typeEnumId" validate-field="enumId">
                     <default-field title="Type Id">
@@ -58,6 +58,16 @@
                 <field name="area">
                     <default-field title="Area">
                         <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagAreaDropDown"/>
+                    </default-field>
+                </field>
+                <field name="location">
+                    <default-field title="Location">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagLocationDropDown"/>
+                    </default-field>
+                </field>
+                <field name="partyId">
+                    <default-field title="Contractor">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagContractorDropDown"/>
                     </default-field>
                 </field>
                 <field name="parentAssetId" validate-parameter="assetId">

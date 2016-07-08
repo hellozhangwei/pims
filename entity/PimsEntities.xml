@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.0.xsd">
-    <extend-entity entity-name="WorkEffort" package-name="mantle.work.effort">
+    <extend-entity entity-name="WorkEffort" package="mantle.work.effort">
         <field name="leader" type="text-short"/>
     </extend-entity>
 
-    <extend-entity entity-name="Asset" package-name="mantle.product.asset">
+    <extend-entity entity-name="Asset" package="mantle.product.asset">
         <field name="typeEnumId" type="text-short"/>
         <field name="functionCodeEnumId" type="text-short"/>
         <field name="disciplineEnumId" type="text-short"/>
         <field name="areaEnumId" type="text-short"/>
+        <field name="locationEnumId" type="text-short"/>
     </extend-entity>
 </entities>
