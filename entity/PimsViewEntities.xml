@@ -38,6 +38,9 @@
         </member-entity>
         <member-entity entity-alias="PP" entity-name="mantle.work.effort.WorkEffort" join-from-alias="WEAA" join-optional="true">
             <key-map field-name="workEffortId"/>
+            <entity-condition>
+                <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
+            </entity-condition>
         </member-entity>
 
         <alias-all entity-alias="SubSystem">
@@ -54,14 +57,6 @@
         <alias name="systemName" field="assetName" entity-alias="System"/>
         <entity-condition>
             <date-filter/>
-        </entity-condition>
-    </view-entity>
-
-    <view-entity entity-name="PimsProject" package="mantle.work.effort">
-        <member-entity entity-alias="WE" entity-name="WorkEffort"/>
-        <alias-all entity-alias="WE"/>
-        <entity-condition>
-            <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
         </entity-condition>
     </view-entity>
 </entities>
