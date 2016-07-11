@@ -45,22 +45,22 @@
                         <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagTypeDropDown"/>
                     </default-field>
                 </field>
-                <field name="functionEnumId" validate-field="enumId">
+                <field name="functionCodeEnumId" validate-field="enumId">
                     <default-field title="Function Code">
                         <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagFunctionCodeDropDown"/>
                     </default-field>
                 </field>
-                <field name="discipline">
+                <field name="disciplineEnumId">
                     <default-field title="Discipline">
                         <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagDisciplineDropDown"/>
                     </default-field>
                 </field>
-                <field name="area">
+                <field name="areaEnumId">
                     <default-field title="Area">
                         <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagAreaDropDown"/>
                     </default-field>
                 </field>
-                <field name="location">
+                <field name="locationEnumId">
                     <default-field title="Location">
                         <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#TagLocationDropDown"/>
                     </default-field>
@@ -89,25 +89,7 @@
                 </field>
             </form-single>
             <render-mode>
-                <text type="html"><![CDATA[
-                       <script language="javascript">
-                            $("#CreateTag_parentAssetId").change(function(){
-                                $.ajax({
-                                    type: "POST",
-                                    url: "${sri.screenUrlInstance.url}/getSystem",
-                                    data:{ assetId:$(this).val(),moquiSessionToken: "${(ec.web.sessionToken)!}"},
-                                    success: function(data) {
-                                        <!--console.log("======success===data=====" + data);-->
-                                        $("#CreateTag_systemName").val(data.systemName);
-                                        $("#CreateTag_workEffortName").val(data.workEffortName);
-                                       },
-                                    error: function(data) {
-                                            console.log("======error===data=====" + data);
-                                            }
-                                    });
-                            });
-                       </script>
-                    ]]></text>
+                <text type="html" template="true" location="component://pims/screen/PimsApp/Tag/Tag.js.ftl"/>
             </render-mode>
         </container-dialog>
         <form-list name="ListTag" list="TagList">

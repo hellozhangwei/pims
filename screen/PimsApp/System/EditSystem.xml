@@ -3,13 +3,10 @@
         default-menu-title="System" default-menu-index="1">
 
     <parameter name="assetId"/>
-
     <transition name="UpdateSystem">
         <actions>
             <service-call name="update#Asset" in-map="context"/>
-
             <service-call name="delete#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
-
             <set field="context.workEffortId" from="newWorkEffortId"/>
             <service-call name="create#WorkEffortAssetAssign" in-map="context"/>
             <message>Update System successfully!</message>
@@ -32,27 +29,10 @@
                 <compare field="assetId" operator="not-empty"/>
             </condition>
             <widgets>
-                <form-single name="EditAsset" transition="UpdateSystem" map="asset">
-                    <field name="assetId">
-                        <default-field title="Asset Id">
-                            <hidden/>
-                        </default-field>
-                    </field>
-                    <field name="workEffortId">
-                        <default-field>
-                            <hidden/>
-                        </default-field>
-                    </field>
-                    <field name="fromDate">
-                        <default-field>
-                            <hidden/>
-                        </default-field>
-                    </field>
-                    <field name="assetName">
-                        <default-field title="System Name">
-                            <text-line/>
-                        </default-field>
-                    </field>
+                <form-single name="EditAsset" transition="UpdateSystem" map="asset" extends="component://pims/screen/PimsApp/System/FindSystem.xml#CreateSystem">
+                    <field name="assetId"><default-field ><hidden/></default-field></field>
+                    <field name="fromDate"><default-field><hidden/></default-field></field>
+                    <field name="workEffortId"><default-field><hidden/></default-field></field>
                     <field name="newWorkEffortId">
                         <default-field title="Project">
                             <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsProjectDropDown">
@@ -60,15 +40,9 @@
                             </widget-template-include>
                         </default-field>
                     </field>
-                    <field name="comments">
-                        <default-field title="comments">
-                            <text-area/>
-                        </default-field>
-                    </field>
+
                     <field name="submitButton">
-                        <default-field title="Update">
-                            <submit/>
-                        </default-field>
+                        <default-field title="Update"><submit/></default-field>
                     </field>
                 </form-single>
             </widgets>

@@ -3,6 +3,7 @@
         default-menu-title="Tag" default-menu-index="3">
 
     <parameter name="assetId"/>
+    <parameter name="partyId"/>
     <transition name="UpdateTag">
         <actions>
             <service-call name="update#Asset" in-map="context"/>
@@ -10,6 +11,7 @@
         </actions>
         <default-response url="."/>
     </transition>
+    <transition-include name="getSystem" location="component://pims/screen/PimsApp/Tag/FindTag.xml"/>
 
     <actions>
         <entity-find-one entity-name="Asset" value-field="asset"/>
@@ -26,38 +28,18 @@
                 <compare field="assetId" operator="not-empty"/>
             </condition>
             <widgets>
-                <form-single name="EditTag" transition="UpdateTag" map="asset">
+                <form-single name="CreateTag" transition="UpdateTag" map="asset"  extends="component://pims/screen/PimsApp/Tag/FindTag.xml#CreateTag">
                     <field name="assetId">
-                        <default-field title="Asset Id">
-                            <hidden/>
-                        </default-field>
+                        <default-field title="Asset Id"><hidden/></default-field>
                     </field>
-                    <field name="assetName">
-                        <default-field title="Tag Name">
-                            <text-line/>
-                        </default-field>
+                    <field name="partyId">
+                        <default-field title="Party Id"> <hidden/></default-field>
                     </field>
-                    <field name="parentAssetId">
-                        <default-field title="SubSystem Name">
-                            <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsSystemDropDown"/>
-                        </default-field>
-                    </field>
-                    <field name="facilityId">
-                        <default-field title="Plant">
-                            <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
-                        </default-field>
-                    </field>
-                    <field name="comments">
-                        <default-field title="comments">
-                            <text-line/>
-                        </default-field>
-                    </field>
-                    <field name="submitButton">
-                        <default-field title="Update">
-                            <submit/>
-                        </default-field>
-                    </field>
+                    <field name="submitbutton"><default-field title="Update"><submit/></default-field></field>
                 </form-single>
+                <render-mode>
+                    <text type="html" template="true" location="component://pims/screen/PimsApp/Tag/Tag.js.ftl"/>
+                </render-mode>
             </widgets>
         </section>
     </widgets>

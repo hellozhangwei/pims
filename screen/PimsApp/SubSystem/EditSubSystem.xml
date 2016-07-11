@@ -26,29 +26,13 @@
                 <compare field="assetId" operator="not-empty"/>
             </condition>
             <widgets>
-                <form-single name="EditSubSystem" transition="UpdateSubSystem" map="asset">
+                <form-single name="EditSubSystem" transition="UpdateSubSystem" map="asset" extends="component://pims/screen/PimsApp/SubSystem/FindSubSystem.xml#CreateSubSystem">
                     <field name="assetId">
                         <default-field title="Asset Id">
                             <hidden/>
                         </default-field>
                     </field>
-                    <field name="assetName">
-                        <default-field title="SubSystem Name">
-                            <text-line/>
-                        </default-field>
-                    </field>
-                    <field name="parentAssetId">
-                        <default-field title="System Name">
-                            <widget-template-include
-                                    location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsSystemDropDown">
-                            </widget-template-include>
-                        </default-field>
-                    </field>
-                    <field name="comments">
-                        <default-field title="comments">
-                            <text-area/>
-                        </default-field>
-                    </field>
+                  
                     <field name="submitButton">
                         <default-field title="Update">
                             <submit/>

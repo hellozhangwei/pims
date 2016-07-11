@@ -14,7 +14,7 @@
     </widget-template>
 <!--Project-->
     <widget-template name="PimsProjectDropDown">
-        <drop-down no-current-selected-key="${noCurrentSelectedKey?:''}">
+        <drop-down  allow-empty="true">
             <entity-options key="${workEffortId}" text="${workEffortName}">
                 <entity-find entity-name="WorkEffort">
                     <econdition field-name="workEffortTypeEnumId" operator="equals" value="PimsProject"/>
@@ -28,7 +28,7 @@
         <drop-down allow-empty="true">
             <entity-options key="${assetId}" text="${assetName}">
                 <entity-find entity-name="Asset">
-                    <econdition field-name="assetTypeEnumId" operator="equals" value="PimsSubSystem"/>
+                    <econdition field-name="classEnumId" operator="equals" value="PimsSubSystem"/>
                 </entity-find>
             </entity-options>
         </drop-down>
