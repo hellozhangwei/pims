@@ -2,6 +2,8 @@
 
 <entity-facade-xml type="demo">
     <mantle.party.Party partyId="pims_test" partyTypeEnumId="PtyPerson"/>
+    <mantle.party.Person partyId="pims_test" firstName="Pims" lastName="Test"/>
+
     <moqui.security.UserAccount userId="pims_test"  partyId="pims_test" username="pims_test" userFullName="Test Pims"
                                 currentPassword="16ac58bbfa332c1c55bd98b53e60720bfa90d394" passwordHashType="SHA"
                                 passwordHint="framework name, lowercase" currencyUomId="USD" locale="en_US" timeZone="US/Central"
