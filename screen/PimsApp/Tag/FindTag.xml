@@ -81,8 +81,13 @@
                 <field name="workEffortName" validate-field="workEffortName">
                     <default-field title="Current Project"><text-line disabled="true"/></default-field>
                 </field>
+                <field name="facilityId">
+                    <default-field title="Plant">
+                        <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PlantDropDown"/>
+                    </default-field>
+                </field>
                 <field name="comments">
-                    <default-field title="comments"><text-line/></default-field>
+                    <default-field title="comments"><text-area/></default-field>
                 </field>
                 <field name="submitbutton">
                     <default-field title="Create"><submit/></default-field>

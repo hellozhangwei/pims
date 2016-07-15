@@ -3,29 +3,26 @@
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-2.0.xsd">
 
     <view-entity entity-name="SystemAndProject" package="mantle.work.effort">
-        <member-entity entity-alias="WEAA" entity-name="mantle.work.effort.WorkEffortAssetAssign"/>
-        <member-entity entity-alias="WE" entity-name="mantle.work.effort.WorkEffort" join-from-alias="WEAA">
-            <key-map field-name="workEffortId"/>
-        </member-entity>
-        <member-entity entity-alias="AST" entity-name="mantle.product.asset.Asset" join-from-alias="WEAA">
+        <member-entity entity-alias="AST" entity-name="mantle.product.asset.Asset"/>
+        <member-entity entity-alias="WEAA" entity-name="mantle.work.effort.WorkEffortAssetAssign" join-from-alias="AST" join-optional="true">
             <key-map field-name="assetId"/>
         </member-entity>
-        <alias-all entity-alias="WEAA"/>
+        <member-entity entity-alias="WE" entity-name="mantle.work.effort.WorkEffort" join-from-alias="WEAA" join-optional="true">
+            <key-map field-name="workEffortId"/>
+            <entity-condition distinct="true">
+                <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
+            </entity-condition>
+        </member-entity>
+        <alias-all entity-alias="AST">
+            <exclude field="facilityId"/>
+        </alias-all>
+        <alias-all entity-alias="WEAA">
+            <exclude field="comments"/>
+        </alias-all>
         <alias-all entity-alias="WE">
             <exclude field="ownerPartyId"/>
             <exclude field="statusId"/>
         </alias-all>
-        <alias-all entity-alias="AST">
-            <exclude field="statusId"/>
-            <exclude field="comments"/>
-            <exclude field="facilityId"/>
-        </alias-all>
-        <alias name="assetStatusId" entity-alias="AST" field="statusId"/>
-        <relationship type="one-nofk" title="WorkEffortAssetAssign" related="moqui.basic.StatusItem"/>
-        <entity-condition>
-            <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
-            <date-filter/>
-        </entity-condition>
     </view-entity>
 
     <view-entity entity-name="SubSystemSystemProject" package="mantle.work.effort">

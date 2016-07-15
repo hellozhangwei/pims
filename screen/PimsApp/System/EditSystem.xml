@@ -2,20 +2,17 @@
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.0.xsd"
         default-menu-title="System" default-menu-index="1">
 
-    <parameter name="assetId"/>
+    <parameter name="assetId" required="true"/>
     <transition name="UpdateSystem">
-        <actions>
-            <service-call name="update#Asset" in-map="context"/>
-            <service-call name="delete#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
-            <set field="context.workEffortId" from="newWorkEffortId"/>
-            <service-call name="create#WorkEffortAssetAssign" in-map="context"/>
-            <message>Update System successfully!</message>
-        </actions>
+        <service-call name="system.SystemServices.update#System" in-map="context" out-map="context"/>
         <default-response url="."/>
     </transition>
 
     <actions>
-        <entity-find-one entity-name="WorkEffortAssetAndAssign" value-field="asset"/>
+        <entity-find entity-name="SystemAndProject" list="assetList">
+            <econdition field-name="assetId"/>
+        </entity-find>
+        <set field="assetZero" from="assetList[0]"/>
     </actions>
     <widgets>
         <section name="ProjectMenu" condition="project">
@@ -26,21 +23,20 @@
 
         <section name="Update">
             <condition>
-                <compare field="assetId" operator="not-empty"/>
+                <compare field="assetId" operator="not-empty" value="context.assetId"/>
             </condition>
             <widgets>
-                <form-single name="EditAsset" transition="UpdateSystem" map="asset" extends="component://pims/screen/PimsApp/System/FindSystem.xml#CreateSystem">
+                <form-single name="EditSystem" transition="UpdateSystem"  map="assetZero" extends="component://pims/screen/PimsApp/System/FindSystem.xml#CreateSystem">
                     <field name="assetId"><default-field ><hidden/></default-field></field>
-                    <field name="fromDate"><default-field><hidden/></default-field></field>
                     <field name="workEffortId"><default-field><hidden/></default-field></field>
+                    <field name="fromDate"><default-field><hidden/></default-field></field>
                     <field name="newWorkEffortId">
                         <default-field title="Project">
                             <widget-template-include location="component://pims/template/screen/PimsWidgetTemplates.xml#PimsProjectDropDown">
-                                <set field="noCurrentSelectedKey" value="${workEffortId}"/>
+                                <set field="newWorkEffortId" from="assetZero.workEffortId"/>
                             </widget-template-include>
                         </default-field>
                     </field>
-
                     <field name="submitButton">
                         <default-field title="Update"><submit/></default-field>
                     </field>
