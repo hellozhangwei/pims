@@ -38,6 +38,14 @@
             <parameter name="assetId" required="true"/>
         </out-parameters>
         <actions>
+            <entity-find entity-name="mantle.product.asset.Asset" list="systemList" >
+                <econdition field-name="classEnumId" value="PimsSystem"/>
+                <econdition field-name="assetId" value="${assetId}" operator="not-equals"/>
+                <econdition field-name="assetName" value="${assetName}" operator="equals"/>
+            </entity-find>
+            <if condition="systemList">
+                <return error="true" message="System name is already exist!Please rename the System Name!"/>
+            </if>
             <if condition="workEffortId">
                 <service-call name="delete#mantle.work.effort.WorkEffortAssetAssign" in-map="context"/>
             </if>

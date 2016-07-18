@@ -1,8 +1,10 @@
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.0.xsd">
+
     <service verb="create" noun="SubSystem" type="inline">
         <in-parameters>
             <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
+            <parameter name="assetId" required="true"/>
             <parameter name="assetName" required="true"/>
         </in-parameters>
         <actions>
@@ -11,9 +13,30 @@
                 <econdition field-name="assetName" value="${assetName}" operator="equals"/>
             </entity-find>
             <if condition="assetList">
-                <return error="true" message="System name is already exist!"/>
+                <return error="true" message="SubSystem name is already exist!"/>
             </if>
             <service-call name="create#mantle.product.asset.Asset" in-map="context" out-map="context">
+                <field-map field-name="classEnumId" value="PimsSubSystem"/>
+            </service-call>
+        </actions>
+    </service>
+
+    <service verb="update" noun="SubSystem" type="inline">
+        <in-parameters>
+            <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
+            <parameter name="assetId" required="true"/>
+            <parameter name="assetName" required="true"/>
+        </in-parameters>
+        <actions>
+            <entity-find entity-name="Asset" list="assetList">
+                <econdition field-name="classEnumId" value="PimsSubSystem"/>
+                <econdition field-name="assetId" value="${assetId}" operator="not-equals"/>
+                <econdition field-name="assetName" value="${assetName}" operator="equals"/>
+            </entity-find>
+            <if condition="assetList">
+                <return error="true" message="SubSystem name is already exist!Please rename the SubSystem Name!"/>
+            </if>
+            <service-call name="update#mantle.product.asset.Asset" in-map="context" out-map="context">
                 <field-map field-name="classEnumId" value="PimsSubSystem"/>
             </service-call>
         </actions>

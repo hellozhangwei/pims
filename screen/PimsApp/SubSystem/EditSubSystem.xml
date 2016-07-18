@@ -5,7 +5,7 @@
     <parameter name="assetId"/>
     <transition name="UpdateSubSystem">
         <actions>
-            <service-call name="update#Asset" in-map="context"/>
+            <service-call name="subsystem.SubSystemServices.update#SubSystem" in-map="context"/>
             <message>Update SubSystem successfully!</message>
         </actions>
         <default-response url="."/>

@@ -4,6 +4,7 @@
         <in-parameters>
             <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
             <parameter name="assetName" required="true"/>
+            <parameter name="assetId" required="true"/>
         </in-parameters>
         <actions>
             <entity-find entity-name="Asset" list="assetList">
@@ -18,6 +19,32 @@
             </service-call>
             <if condition="partyId">
                 <service-call name="create#mantle.product.asset.AssetPartyAssignment" in-map="context">
+                    <field-map field-name="roleTypeId" value="Contractor"/>
+                </service-call>
+            </if>
+        </actions>
+    </service>
+
+    <service verb="update" noun="Tag" type="inline">
+        <in-parameters>
+            <auto-parameters entity-name="mantle.product.asset.Asset" include="nonpk"/>
+            <parameter name="assetId" required="true"/>
+            <parameter name="assetName" required="true"/>
+        </in-parameters>
+        <actions>
+            <entity-find entity-name="Asset" list="assetList">
+                <econdition field-name="classEnumId" value="PimsTag"/>
+                <econdition field-name="assetId" value="${assetId}" operator="not-equals"/>
+                <econdition field-name="assetName" value="${assetName}" operator="equals"/>
+            </entity-find>
+            <if condition="assetList">
+                <return error="true" message="Tag name is already exist!Please rename the Tag Name again!"/>
+            </if>
+            <service-call name="update#mantle.product.asset.Asset" in-map="context" out-map="context">
+                <field-map field-name="classEnumId" value="PimsTag"/>
+            </service-call>
+            <if condition="partyId">
+                <service-call name="update#mantle.product.asset.AssetPartyAssignment" in-map="context">
                     <field-map field-name="roleTypeId" value="Contractor"/>
                 </service-call>
             </if>

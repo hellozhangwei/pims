@@ -12,6 +12,27 @@
         </actions>
     </service>
 
+    <service verb="update" noun="Project" type="inline">
+        <in-parameters>
+            <auto-parameters entity-name="mantle.work.effort.WorkEffort" include="nonpk"/>
+            <parameter name="workEffortId" required="true"/>
+        </in-parameters>
+        <actions>
+            <entity-find entity-name="mantle.work.effort.WorkEffort" list="projectList" >
+                <econdition field-name="workEffortTypeEnumId" value="PimsProject"/>
+                <econdition field-name="workEffortId" value="${workEffortId}" operator="not-equals"/>
+                <econdition field-name="workEffortName" value="${workEffortName}" operator="equals"/>
+            </entity-find>
+            <if condition="projectList">
+                <return error="true" message="Project name is already exist!Please rename the project!"/>
+            </if>
+            <service-call name="update#mantle.work.effort.WorkEffort" out-map="context" in-map="context">
+                <field-map field-name="workEffortTypeEnumId" value="PimsProject"/>
+            </service-call>
+        </actions>
+
+    </service>
+
     <service verb="create" noun="Project" type="inline">
         <in-parameters>
             <auto-parameters entity-name="mantle.work.effort.WorkEffort" include="nonpk"/>

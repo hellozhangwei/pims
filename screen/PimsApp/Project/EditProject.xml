@@ -6,7 +6,9 @@
 
     <transition name="updateProject">
         <actions>
-            <service-call name="update#WorkEffort" in-map="context"/>
+            <service-call name="project.ProjectServices.update#Project" in-map="context">
+                <field-map field-name="workEffortId"/>
+            </service-call>
             <message>Update Project successfully!</message>
         </actions>
         <default-response url="."/>

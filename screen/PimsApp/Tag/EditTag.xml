@@ -6,7 +6,7 @@
     <parameter name="partyId"/>
     <transition name="UpdateTag">
         <actions>
-            <service-call name="update#Asset" in-map="context"/>
+            <service-call name="tag.TagServices.update#Tag" in-map="context"/>
             <message>Update Tag successfully!</message>
         </actions>
         <default-response url="."/>
