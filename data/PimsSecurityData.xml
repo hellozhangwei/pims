@@ -21,9 +21,10 @@
                                         artifactTypeEnumId="AT_XML_SCREEN" inheritAuthz="Y"/>
     <moqui.security.ArtifactAuthz artifactAuthzId="DO_AUTHZ_ALL" userGroupId="PIMS_ADMIN" artifactGroupId="PIMS_APP"
                                   authzTypeEnumId="AUTHZT_ALWAYS" authzActionEnumId="AUTHZA_ALL"/>
-    <moqui.basic.Enumeration description="pims Project" enumId="PimsProject" enumTypeId="WorkEffortType"/>
-    <moqui.basic.Enumeration description="pims System" enumId="PimsSystem" enumTypeId="AssetClass"/>
-    <moqui.basic.Enumeration description="pims SubSystem" enumId="PimsSubSystem" enumTypeId="AssetClass"/>
-    <moqui.basic.Enumeration description="pims Tag" enumId="PimsTag" enumTypeId="AssetClass"/>
+    <moqui.basic.Enumeration description="Pims Project" enumId="PimsProject" enumTypeId="WorkEffortType"/>
+    <moqui.basic.Enumeration description="Pims Task" enumId="PimsTask" enumTypeId="WorkEffortType"/>
+    <moqui.basic.Enumeration description="Pims System" enumId="PimsSystem" enumTypeId="AssetClass"/>
+    <moqui.basic.Enumeration description="Pims SubSystem" enumId="PimsSubSystem" enumTypeId="AssetClass"/>
+    <moqui.basic.Enumeration description="Pims Tag" enumId="PimsTag" enumTypeId="AssetClass"/>
 
 </entity-facade-xml>

@@ -15,6 +15,7 @@
         </member-entity>
         <alias-all entity-alias="AST">
             <exclude field="facilityId"/>
+            <exclude field="statusId"/>
         </alias-all>
         <alias-all entity-alias="WEAA">
             <exclude field="comments"/>

@@ -4,12 +4,28 @@
 
     <parameter name="workEffortId"/>
 
+
+    <actions>
+        <entity-find entity-name="WorkEffort" list="ChecklistList">
+            <econdition field-name="rootWorkEffortId" from="workEffortId"/>
+            <econdition field-name="workEffortTypeEnumId" value="PimsTask"/>
+            <order-by field-name="-workEffortId"/>
+        </entity-find>
+    </actions>
+
     <widgets>
-        <!--<section name="ProjectMenu" condition="project"><widgets>-->
-            <!--<link url="newProject" text="New Project" link-type="hidden-form" icon="glyphicon glyphicon-plus"/>-->
-        <!--</widgets></section>-->
         <widgets>
-            <label text="Checklists"/>
+            <form-list name="ListChecklist" list="ChecklistList">
+                <field name="workEffortTypeEnumId"><default-field><hidden default-value="PimsTask"/></default-field></field>
+                <field name="workEffortId">
+                    <header-field title="Checklist Id" show-order-by="case-insensitive"/>
+                    <default-field><display/></default-field>
+                </field>
+                <field name="workEffortName">
+                    <header-field title="Desc" show-order-by="case-insensitive"/>
+                    <default-field><display/></default-field>
+                </field>
+            </form-list>
         </widgets>
     </widgets>
 </screen>

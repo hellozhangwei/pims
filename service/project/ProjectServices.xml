@@ -55,4 +55,17 @@
         </actions>
     </service>
 
+    <service verb="createChecklist" type="inline">
+        <in-parameters>
+            <parameter name="workEffortId"/>
+            <parameter name="rootWorkEffortId"/>
+            <parameter name="workEffortName" required="true"/>
+        </in-parameters>
+        <actions>
+            <service-call name="create#mantle.work.effort.WorkEffort" out-map="context" in-map="context">
+                <field-map field-name="workEffortTypeEnumId" value="PimsTask"/>
+            </service-call>
+        </actions>
+    </service>
+
 </services>
