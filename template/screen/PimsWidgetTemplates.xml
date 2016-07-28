@@ -12,9 +12,10 @@
             </entity-options>
         </drop-down>
     </widget-template>
-<!--Project-->
+
+    <!--Project-->
     <widget-template name="PimsProjectDropDown">
-        <drop-down  allow-empty="true">
+        <drop-down allow-empty="true" style="chosen-wide">
             <entity-options key="${workEffortId}" text="${workEffortName}">
                 <entity-find entity-name="WorkEffort">
                     <econdition field-name="workEffortTypeEnumId" operator="equals" value="PimsProject"/>
@@ -23,6 +24,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <!--SubSystem-->
     <widget-template name="PimsSubSystemDropDown">
         <drop-down allow-empty="true">
@@ -33,6 +35,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <!--System-->
     <widget-template name="PimsSystemDropDown">
         <drop-down allow-empty="true">
@@ -43,6 +46,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <widget-template name="TagTypeDropDown">
         <drop-down allow-empty="true">
             <entity-options key="${enumId}" text="${description}">
@@ -52,6 +56,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <widget-template name="TagFunctionCodeDropDown">
         <drop-down allow-empty="true">
             <entity-options key="${enumId}" text="${description}">
@@ -61,6 +66,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <widget-template name="TagDisciplineDropDown">
         <drop-down allow-empty="true">
             <entity-options key="${enumId}" text="${description}">
@@ -70,6 +76,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <widget-template name="TagAreaDropDown">
         <drop-down allow-empty="true" >
             <entity-options key="${enumId}" text="${description}">
@@ -79,6 +86,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <widget-template name="TagLocationDropDown">
         <drop-down allow-empty="true" >
             <entity-options key="${enumId}" text="${description}">
@@ -88,6 +96,7 @@
             </entity-options>
         </drop-down>
     </widget-template>
+
     <widget-template name="TagContractorDropDown">
         <drop-down allow-empty="true">
             <entity-options key="${partyId}" text="${organizationName?:''} ${firstName?:''} ${lastName?:''}">
@@ -97,27 +106,5 @@
             </entity-options>
         </drop-down>
     </widget-template>
-    <!--<widget-template name="parentAssetIdDropDown">-->
-        <!--<drop-down>-->
-            <!--<entity-options key="${assetId}" text="${assetName}">-->
-                <!--<entity-find entity-name="Asset">-->
-                    <!--<econdition field-name="parentAssetId"/>-->
-                    <!--<order-by field-name="assetId"/>-->
-                <!--</entity-find>-->
-            <!--</entity-options>-->
-        <!--</drop-down>-->
-    <!--</widget-template>-->
-    <!---->
-    <!--<widget-template name="workEffortNameDropDown">-->
-        <!--<drop-down>-->
-            <!--<entity-options key="${workEffortId}" text="${workEffortName}">-->
-                <!--<entity-find entity-name="WorkEffort">-->
-                    <!--<econdition field-name="workEffortTypeEnumId" value="PimsProject"/>-->
-                    <!--<select-field field-name="workEffortId"/>-->
-                    <!--<select-field field-name="workEffortName"/>-->
-                    <!--<order-by field-name="workEffortName"/>-->
-                <!--</entity-find>-->
-            <!--</entity-options>-->
-        <!--</drop-down>-->
-    <!--</widget-template>-->
+
 </widget-templates>
