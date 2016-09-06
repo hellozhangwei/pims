@@ -5,8 +5,16 @@
         <datasource group-name="transactional" database-conf-name="postgres" schema-name="public" startup-add-missing="true" runtime-add-missing="false">
             <inline-jdbc pool-minsize="5" pool-maxsize="50">
                 <xa-properties user="postgres" password="Shine2012!" serverName="localhost" portNumber="5432"
-                               databaseName="MoquiDEFAULT20160805"/>
+                               databaseName="MoquiDEFAULT20160906"/>
             </inline-jdbc>
         </datasource>
+
+        <datasource group-name="tenantcommon" database-conf-name="postgres" schema-name="public" startup-add-missing="true" runtime-add-missing="false">
+            <inline-jdbc pool-minsize="5" pool-maxsize="50">
+                <xa-properties user="postgres" password="Shine2012!" serverName="localhost" portNumber="5432"
+                               databaseName="MoquiDEFAULT20160906"/>
+            </inline-jdbc>
+        </datasource>
+
     </entity-facade>
 </moqui-conf>
