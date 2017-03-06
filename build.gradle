@@ -36,9 +36,14 @@ jar {
 task cleanLib(type: Delete) { delete file(jar.archivePath) }
 clean.dependsOn cleanLib
 
-task copyDependencies << {
-    copy { from (configurations.runtime - project(':framework').configurations.runtime - project(':framework').jar.archivePath)
-        into file(projectDir.absolutePath + '/lib') }
+task copyDependencies {
+    doLast {
+        copy {
+            from (configurations.runtime - project(':framework').configurations.runtime - project(':framework').jar.archivePath)
+            into file(projectDir.absolutePath + '/lib')
+        }
+    }
+
 }
 
 copyDependencies.dependsOn cleanLib
